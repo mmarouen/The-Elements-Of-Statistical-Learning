@@ -1,0 +1,15 @@
+set.seed(0)
+library(splines)
+x=seq(0,4*pi,length.out = 50)
+y=cos(x)+0.3*rnorm(length(x))
+
+plot(x,y,type='p')
+m1=lm(y~bs(x,degree = 1,df = 1))
+m2=lm(y~bs(x,degree = 1,df = 3))
+m3=lm(y~bs(x,degree = 3,df = 3))
+m4=lm(y~bs(x,degree = 2,df = 4))
+
+lines(x,fitted(m1))
+lines(x,fitted(m2))
+lines(x,fitted(m3))
+lines(x,fitted(m4))
